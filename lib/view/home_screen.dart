@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:newgigr/resources/color.dart';
 import 'package:newgigr/resources/images.dart';
 import 'package:newgigr/resources/svg_icons.dart';
+import 'package:newgigr/view/notification_screen.dart';
 import 'package:newgigr/widgets/custome_text_field.dart';
 import 'package:newgigr/widgets/user_profile.dart';
 
@@ -17,33 +18,53 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         children: [
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           ListTile(
             contentPadding: EdgeInsets.zero,
             leading: UserProfile(),
-            trailing: Container(
-              height: 40.h,
-              width: 40.w,
-              decoration: ShapeDecoration(
+            trailing: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationScreen()),
+                );
+              },
+              child: Container(
+                height: 40.h,
+                width: 40.w,
+                decoration: ShapeDecoration(
                   shape: CircleBorder(),
                   color: appPrimaryColor,
-              ),
-              child: Center(
-                child: SvgPicture.string(SvgIcons.notification,color: Colors.white,),
+                ),
+                child: Center(
+                  child: SvgPicture.string(
+                    SvgIcons.notification,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-            title: Text('Hello, Ali',style: TextStyle(
-              color: appPrimaryColor,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600,
-            ),),
-            subtitle: Text('Ready to rent Skill',style: TextStyle(
-              color: textGreyColor,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w300,
-            ),),
+            title: Text(
+              'Hello, Ali',
+              style: TextStyle(
+                color: appPrimaryColor,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            subtitle: Text(
+              'Ready to rent Skill',
+              style: TextStyle(
+                color: textGreyColor,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
           ),
           SearchTextField(
             hintText: 'Search services, gigs, skills...',
@@ -51,13 +72,20 @@ class HomeScreen extends StatelessWidget {
               // handle search logic
             },
           ),
-          SizedBox(height: 20.h,),
-          Text('Popular Categories',style: TextStyle(
-            color: Colors.black,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-          ),),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 20.h,
+          ),
+          Text(
+            'Popular Categories',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
           // Container(
           //   height: 150.h,
           //   width: double.infinity,
@@ -182,7 +210,9 @@ class HomeScreen extends StatelessWidget {
                 'ATS optimization. Get hired faster with expert formatting.',
             tags: ['Resume', 'Fast'],
           ),
-          SizedBox(height: 15.h,),
+          SizedBox(
+            height: 15.h,
+          ),
           buildCategoryCard(
             context,
             image: debug, // already defined
@@ -195,7 +225,9 @@ class HomeScreen extends StatelessWidget {
                 'Support for multiple programming language',
             tags: ['Coding', 'Debugging'],
           ),
-          SizedBox(height: 15.h,),
+          SizedBox(
+            height: 15.h,
+          ),
           buildCategoryCard(
             context,
             image: poem, // already defined
@@ -214,16 +246,16 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget buildCategoryCard(
-      BuildContext context, {
-        required String image,
-        required String title,
-        required double price,
-        required String duration,
-        required double rating,
-        required int reviews,
-        required String description,
-        required List<String> tags,
-      }) {
+    BuildContext context, {
+    required String image,
+    required String title,
+    required double price,
+    required String duration,
+    required double rating,
+    required int reviews,
+    required String description,
+    required List<String> tags,
+  }) {
     return Container(
       height: 150.h,
       width: double.infinity,
@@ -311,7 +343,8 @@ class HomeScreen extends StatelessWidget {
                   children: tags.map((tag) {
                     return Container(
                       margin: EdgeInsets.only(right: 8.w),
-                      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.r),
@@ -330,6 +363,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }
-

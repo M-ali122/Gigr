@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newgigr/resources/color.dart';
 import 'package:newgigr/resources/svg_icons.dart';
-import 'package:newgigr/view/earn_screen.dart';
-import 'package:newgigr/view/edit_profile_screen.dart';
-import 'package:newgigr/view/login_screen.dart';
-import 'package:newgigr/view/my_task_screen.dart';
-import 'package:newgigr/view/setting_screen.dart';
+import 'package:newgigr/view/about_us.dart';
+import 'package:newgigr/view/terms_condition.dart';
+import 'package:newgigr/view/change_password_screen.dart';
+import 'package:newgigr/view/privacy_policy.dart';
 import 'package:newgigr/widgets/custome_profile_list_tile.dart';
 import 'package:newgigr/widgets/user_profile.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,74 +46,57 @@ class Profile extends StatelessWidget {
               height: 10.h,
             ),
             Divider(),
-            SizedBox(
-              height: 40.h,
-            ),
             CustomeProfileListTile(
-              icon: SvgIcons.person,
-              text: 'Profile',
+              icon: SvgIcons.lock,
+              text: 'Change Password',
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditProfileScreen(),
+                      builder: (context) => ChangePasswordScreen(),
                     ));
               },
             ),
-            SizedBox(
-              height: 5.h,
-            ),
             CustomeProfileListTile(
-              icon: SvgIcons.mytask,
-              text: 'My Task',
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyTasksScreen(),
-                    ));
-              },
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomeProfileListTile(
-              icon: SvgIcons.earning,
-              text: 'Earning',
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EarnScreen(),
-                    ));
-              },
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomeProfileListTile(
-              icon: SvgIcons.setting,
-              text: 'Setting',
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SettingScreen(),
-                    ));
-              },
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomeProfileListTile(
-              icon: SvgIcons.logOut,
-              text: 'Log Out',
+              icon: SvgIcons.privacy,
+              text: 'Privacy Policy',
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const PrivacyPolicyScreen()),
                 );
               },
+            ),
+            CustomeProfileListTile(
+              icon: SvgIcons.condition,
+              text: 'Terms & Conditions',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const TermsConditionsScreen()),
+                );
+              },
+            ),
+            CustomeProfileListTile(
+              icon: SvgIcons.aboutUs,
+              text: 'About Us',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AboutUsScreen()),
+                );
+              },
+            ),
+            // CustomeProfileListTile(
+            //   icon: SvgIcons.setting,
+            //   text: 'Rate Us',
+            // ),
+            CustomeProfileListTile(
+              icon: SvgIcons.delete,
+              text: 'Account Delete',
             ),
           ],
         ),
